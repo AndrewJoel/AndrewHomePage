@@ -49,6 +49,7 @@ class CarouselDemoState extends State<CarouselDemo> {
             options: CarouselOptions(
               height: 200.0,
               initialPage: 0,
+              viewportFraction: 1,
               enlargeCenterPage: true,
               //autoPlay: true,
               reverse: false,
@@ -65,6 +66,8 @@ class CarouselDemoState extends State<CarouselDemo> {
                   return Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
+                  
+                    
                     margin: EdgeInsets.symmetric(horizontal: 10.0),
                     decoration: BoxDecoration(
                       color: Colors.white,

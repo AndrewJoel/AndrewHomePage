@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_page/utilities/complete_your_profile.dart';
 import 'package:intl/intl.dart';
-import 'package:home_page/models/card_model.dart';
 import 'package:home_page/utilities/catalouge_card.dart';
 import 'package:home_page/utilities/meetings_card.dart';
-import 'package:home_page/utilities/item1.dart';
+import 'package:home_page/utilities/carousel_component.dart';
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List cardList=[
-    Item1(),
-    Item1(),
-    Item1(),
-    Item1()
-  ];
-List<T> map<T>(List list, Function handler) {
-    List<T> result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.add(handler(i, list[i]));
-    }
-    return result;
-}
+
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
@@ -41,6 +29,7 @@ List<T> map<T>(List list, Function handler) {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start ,
                     children: [
                       Text(
                         'Good Evening, Andrew',
@@ -49,72 +38,31 @@ List<T> map<T>(List list, Function handler) {
                             fontWeight: FontWeight.w500,
                             color: Colors.black),
                       ),
-                      Text(
-                        formattedDate,
-                        textAlign: TextAlign.center,
-                      ),
+                      SizedBox(height:10),
+                          Text(
+                            formattedDate,
+                            textAlign: TextAlign.left,
+                            
+                            
+                          ),
+                        
+                      
                     ],
                   ),
                   CircleAvatar(
                     radius: 40,
                     backgroundImage: AssetImage('assets/images/user_image.png'),
                   ),
-                  // Container(
-                  //   height: 79,
-                  //   width: 79,
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(70),
-                  //     image: DecorationImage(
-                  //       image: AssetImage('assets/images/user_image.png'),
-                  //     ),
-                  //   ),
-                  // ),
+                  
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              height: 199,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 16, right: 6),
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Container(
-                    margin: EdgeInsets.only(right: 10),
-                    height: 199,
-                    width: 344,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 14),
-                      child: Text(
-                        'Container ' + index.toString(),
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(28),
-                        color: Color(cards[index].cardBackground),
-                        image: new DecorationImage(
-                            image: AssetImage(cards[index].cardType))),
-                  );
-                },
-              ),
-            ),
-            Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: map<Widget>(cardList, (index, url) {
-    return Container(
-      width: 10.0,
-      height: 10.0,
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.blueAccent,
-       ),
-     );
-   }),
- ),
+            SizedBox(height:20),
+            
+            CarouselDemo(),
+             Container(height:10,
+                  color: Colors.grey.shade200,),
+            
             Container(
               margin: EdgeInsets.all(5.0),
               child: Column(
@@ -126,6 +74,7 @@ List<T> map<T>(List list, Function handler) {
                           Icons.double_arrow,
                           color: Colors.orange,
                         ),
+                        onPressed: ()=>print('continue learning'),
                       ),
                       Text(
                         'Continue Learning',
@@ -146,9 +95,16 @@ List<T> map<T>(List list, Function handler) {
                       text: 'Diversity in Living Orgainsms',
                       icon: Icons.east,
                       imagePath: 'assets/images/handshake.ico'),
-                  SizedBox(
-                    height: 20,
-                  ),
+                
+                
+                  Container(height:10,
+                  color: Colors.grey.shade200,),
+
+                  CompleteYourProfile(),
+
+                  Container(height:10,
+                  color: Colors.grey.shade200,),
+                  
                   Row(
                     children: [
                       IconButton(
@@ -156,6 +112,7 @@ List<T> map<T>(List list, Function handler) {
                           Icons.videocam,
                           color: Colors.purple,
                         ),
+                        onPressed: ()=>print('Today\'s meetings'),
                       ),
                       Text(
                         'Today\'s Meetings',
@@ -179,6 +136,8 @@ List<T> map<T>(List list, Function handler) {
                 ],
               ),
             ),
+             Container(height:12,
+                  color: Colors.grey.shade200,),
             Container(
               margin: EdgeInsets.all(5.0),
               child: Column(
@@ -190,6 +149,7 @@ List<T> map<T>(List list, Function handler) {
                           Icons.local_police,
                           color: Colors.blue,
                         ),
+                        onPressed: ()=>print('Featured Products'),
                       ),
                       Text(
                         'Featured Products',
@@ -200,28 +160,15 @@ List<T> map<T>(List list, Function handler) {
                       ),
                     ],
                   ),
+                  
+                  CarouselDemo(),
+                  
+                  SizedBox(height:10),
+                  Container(height:10,
+                  color: Colors.grey.shade200,),
+                  
                   Container(
-                    margin: EdgeInsets.only(top: 15),
-                    height: 199,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(left: 16, right: 6),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: EdgeInsets.only(right: 10),
-                          height: 199,
-                          width: 344,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(28),
-                              color: Color(cards2[index].cardBackground),
-                              image: new DecorationImage(
-                                  image: AssetImage(cards2[index].cardType))),
-                        );
-                      },
-                    ),
-                  ),
-                  Container(
+                  
                     margin: EdgeInsets.all(20.0),
                     child: Column(
                       children: [
@@ -251,6 +198,9 @@ List<T> map<T>(List list, Function handler) {
                       ],
                     ),
                   ),
+                  SizedBox(height:10),
+                  Container(height:10,
+                  color: Colors.grey.shade200,),
                   Container(
                     margin: EdgeInsets.all(20.0),
                     child: Column(
@@ -267,6 +217,7 @@ List<T> map<T>(List list, Function handler) {
                       
           
                         SizedBox(height: 10),
+                        
                         Row(
                           children: [
                             Text(
@@ -278,7 +229,7 @@ List<T> map<T>(List list, Function handler) {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
+                        //SizedBox(height: 10),
                         Row(
                           children: [
                             RaisedButton.icon(
@@ -293,6 +244,7 @@ List<T> map<T>(List list, Function handler) {
                                 style: TextStyle(color: Colors.white),
                               ),
                               icon: Icon(
+                                
                                 Icons.share,
                                 color: Colors.white,
                               ),

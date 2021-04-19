@@ -33,6 +33,7 @@ class CatalougeCard extends StatelessWidget {
                           style: TextStyle(fontSize: 14.0, color: Colors.black,fontWeight:FontWeight.w600)),
                     ],
                   ),
+                  SizedBox(height:10),
                     Row(
                       children: [
                         Icon(

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MeetingsCard extends StatelessWidget {
+class CompleteProfileCard extends StatelessWidget {
   final Function functionHandler;
   final String text;
   final IconData leadIcon;
-  final IconData trailIcon;
-  MeetingsCard(
+  CompleteProfileCard(
       {@required this.functionHandler,
       @required this.text,
-      @required this.leadIcon,@required this.trailIcon});
+      @required this.leadIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class MeetingsCard extends StatelessWidget {
         
           leading: Icon(
             leadIcon,
-            color: Colors.red,
+            color: Colors.blue,
           ),
           
           title: Column(
@@ -30,22 +29,12 @@ class MeetingsCard extends StatelessWidget {
                 children: [
                   Text(text,
                       style: TextStyle(fontSize: 14.0, color: Colors.black,fontWeight:FontWeight.w600)),
-                      SizedBox(width:15),
-                  Text(' Today ',style:TextStyle(backgroundColor: Colors.orange.shade800,color: Colors.white,fontSize: 13),),
                 ],
               ),
-              SizedBox(height:10),
-              Row(
-                children: [
-                  Text('6:00 PM to 7:00 PM',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w500),),
-                ],
-              ),
+              
             ],
           ),
-          trailing: Icon(
-            trailIcon,
-            
-          ),
+          
         ),
       ),
     );
